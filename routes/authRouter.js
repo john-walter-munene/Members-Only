@@ -7,7 +7,7 @@ authRouter.get("/sign-up", authController.getSignUp);
 authRouter.post("/sign-up", authController.postSignUp);
 
 authRouter.get("/sign-in", authController.getSignIn);
-authRouter.post("/sign-in", passport.authenticate("local"), { successRedirect: "/", failureRedirect: "/sign-in", });
+authRouter.post("/sign-in", authController.postSignIn);
 authRouter.get("/sign-out", authController.signOut);
 
 module.exports = authRouter;

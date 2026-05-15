@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" href="https://www.flaticon.com/free-icons/smart-key" />
+
+    <script src="/js/header.js" defer></script>
+
+    <title>Members Only</title>
+</head>
+
+<body>
+
+    <header>
+        <%- include("partials/header") %>
+    </header>
+
+    <main>
+
+        <section class="membership-house">
+
+            <form action="/membership" method="post" class="membership-form">
+
+                <div class="inspiration">
+                    <h1>Get Clubhouse Membership</h1>
+
+                    <p>Become a clubhouse member to view the authors of each message.</p>
+                </div>
+
+                <div class="club">
+
+                    <p>To become a member, please type:<strong>I want to become a member</strong></p>
+
+                    <label for="membership">Membership Phrase</label>
+
+                    <input type="text" id="membership" name="membership" 
+                        placeholder="Type the membership phrase" autocomplete="off" required />
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <%- include("partials/footer") %>
+    </footer>
+
+</body>
+</html>

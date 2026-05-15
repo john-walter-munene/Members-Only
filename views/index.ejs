@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="icon" href="/icons/members-only.png" />
+    <script src="/js/header.js" defer></script>
+
+    <title>Members Only</title>
+</head>
+
+<body>
+
+    <header>
+        <%- include("partials/header") %>
+    </header>
+
+    <main>
+
+        <section class="intro">
+
+            <% if (currentUser) { %>
+                <h1>Welcome back,<%= currentUser.first_name %>!</h1>
+            <% } else { %>
+                <h1>You need to login towrite a message</h1>
+            <% } %>
+
+        </section>
+
+        <section class="message-house">
+
+            <% if (posts && posts.length > 0) { %>
+
+                <% posts.forEach((message) => { %>
+
+                    <article class="message-card">
+
+                        <div class="message-header">
+
+                            <img 
+                                src="/images/default-profile.png" 
+                                alt="<%= message.username %> profile picture" 
+                            />
+
+                            <div class="authorship">
+                                <h3><%= message.fullname %></h3>
+                                <p>@<%= message.username %></p>
+                            </div>
+
+                        </div>
+
+                        <div class="message-body">
+                            <h2><%= message.title %></h2>
+
+                            <p>
+                                <%= message.message %>
+                            </p>
+                        </div>
+
+                    </article>
+
+                <% }); %>
+
+            <% } else { %>
+
+                <p class="no-messages">
+                    No messages available.
+                </p>
+
+            <% } %>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <%- include("partials/footer") %>           
+    </footer>
+
+</body>
+</html>
