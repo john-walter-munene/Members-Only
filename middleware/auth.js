@@ -1,27 +1,46 @@
-const Pool  = require("../db/pool");
+const pool  = require("../db/pool");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 passport.use(
-    new LocalStrategy(async (username, password, done) => {
-        try {
-            const { rows } = await pool.query("SELECT * FROM users WHERE username = $1", [username]);  
-            const user = rows[0];
+    new LocalStrategy(
+        {
+            usernameField: "email",
+        },
 
-            if (!user) {
-                return done(null, false, { message: "Incorrect username." });
-            };
+        async (email, password, done) => {
+            try {
+                const { rows } = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
 
-            const match = await bcrypt.compare(password, user.password);
-            if (!match) {
-                return done(null, false, { message: "Incorrect password." });
+                const user = rows[0];
+
+                console.log("User found:", user);
+
+                if (!user) {
+                    return done(null, false, {
+                        message: "Incorrect email.",
+                    });
+                }
+
+                const match = await bcrypt.compare(
+                    password,
+                    user.password_hash
+                );
+
+                if (!match) {
+                    return done(null, false, {
+                        message: "Incorrect password.",
+                    });
+                }
+
+                return done(null, user);
+
+            } catch (error) {
+                return done(error);
             }
-            return done(null, user);
-        } catch (error) {
-            return done(error);
         }
-    })
+    )
 );
 
 passport.serializeUser((user, done) => {

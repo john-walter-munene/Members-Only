@@ -1,25 +1,23 @@
 require("dotenv").config();
 const express = require("express");
 const session = require("express-session");
+const passport = require("./middleware/auth");
 const pgSession = require("connect-pg-simple")(session);
 const app = express();
 const path = require("node:path");
 const pool = require("./db/pool");
 const authRouter = require("./routes/authRouter");
+const indexRouter = require("./routes/indexRouter");
 
 // Templating engine setup.
 app.set("views", path.join(__dirname, "views"));
-app.set("view-engine", "ejs");
+app.set("view engine", "ejs");
 
 // Serving static assets.
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
 
-// Routes.
-app.get("/", (request, response) => {
-  response.send("Building a members only application");
-});
-
+// Bodyparser setup, and authentication session setup.
 app.use(express.urlencoded({ extended: false }));
 app.use(
   session({
@@ -50,6 +48,7 @@ app.use((req, res, next) => {
 
 // Routes.
 app.use(authRouter);
+app.use(indexRouter);
 
 // Error Handling
 app.use((error, request, response, next) => {

@@ -1,27 +1,67 @@
-const bycript = require("bcrypt");
+const passport = require("passport");
+const bcrypt = require("bcryptjs");
 const pool = require("../db/pool");
+const { matchedData, validationResult } = require("express-validator");
+const { validateRegistration, validateLogin } = require("../middleware/validation"); 
+const { addNewUser } = require("../db/queries");
 
 const getSignUp = (request, response) => {
-    response.render("sign-up");
+    const errors = [];
+    const data = {};
+    response.render("sign-up", { errors, data });
 };
 
-const postSignUp = async (request, response) => {
-    const { email, password, firstName, lastName } = request.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
-  
-    await pool.query(`INSERT INTO users (email, password, first_name, last_name) 
-        VALUES ($1, $2, $3, $4) RETURNING *`, [email, hashedPassword, firstName, lastName]);
-    
-    response.redirect("/sign-in");
-};
+const postSignUp = [
+    validateRegistration,
+    async (request, response) => {
+
+        // Handle validation errors
+        const errors = validationResult(request);
+        if (!errors.isEmpty()) {
+            return response.status(400).render("sign-up", {
+                errors: errors.array(),
+                data: request.body,
+            });
+        }
+
+        // Work with valid data
+        const { firstName, lastName, email, password } = matchedData(request);
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = await addNewUser(email, hashedPassword, firstName, lastName);
+        console.log("New user created:", newUser);
+        response.redirect("/sign-in");
+    },
+];
 
 const getSignIn = (request, response) => {
-    response.render("sign-in");
+    const errors = [];
+    const data = {};
+
+    response.render("sign-in", { errors, data });
 };
 
-const postSignIn = (request, response) => {
-    response.redirect("/");
-}
+const postSignIn = [
+    validateLogin,
+    (request, response, next) => {
+        const errors = validationResult(request);
+
+        if (!errors.isEmpty()) {
+            return response.status(400).render("sign-in", {
+                errors: errors.array(),
+                data: request.body,
+            });
+        }
+
+        console.log(request.body.email, request.body.password);
+
+        next();
+    },
+
+    passport.authenticate("local", {
+        successRedirect: "/",
+        failureRedirect: "/sign-in",
+    }),
+];
 
 const signOut = (request, response, next) => {
     request.logout((err) => {

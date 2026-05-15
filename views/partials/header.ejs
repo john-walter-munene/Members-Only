@@ -1,0 +1,19 @@
+<nav class="header-nav">
+    <div class="header-right">
+        <img src="/images/members-only.svg" alt="Smart Key Icon" class="header-icon" />
+        <h1>Members Only</h1>
+    </div>
+
+    <div class="header-left">
+        <ul>
+            <% if (!locals.currentUser) { %>
+                <li><a href="/sign-in">Login</a></li>
+                <li><a href="/sign-up">Sign Up</a></li>
+            <% } else { %>
+                <li><a href="/new-post">New Post</a></li>
+                <li><a href="/members">All users</a></li>
+                <li><a href="/sign-out">Sign Out</a></li>
+            <% } %>
+        </ul>
+    </div>
+</nav>
