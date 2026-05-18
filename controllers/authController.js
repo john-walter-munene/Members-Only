@@ -28,7 +28,6 @@ const postSignUp = [
         const { firstName, lastName, email, password } = matchedData(request);
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = await addNewUser(email, hashedPassword, firstName, lastName);
-        console.log("New user created:", newUser);
         response.redirect("/sign-in");
     },
 ];
@@ -36,7 +35,6 @@ const postSignUp = [
 const getSignIn = (request, response) => {
     const errors = [];
     const data = {};
-
     response.render("sign-in", { errors, data });
 };
 
@@ -51,16 +49,10 @@ const postSignIn = [
                 data: request.body,
             });
         }
-
-        console.log(request.body.email, request.body.password);
-
         next();
     },
 
-    passport.authenticate("local", {
-        successRedirect: "/",
-        failureRedirect: "/sign-in",
-    }),
+    passport.authenticate("local", { successRedirect: "/", failureRedirect: "/sign-in", failureFlash: true }),
 ];
 
 const signOut = (request, response, next) => {

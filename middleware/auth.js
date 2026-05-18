@@ -5,37 +5,23 @@ const bcrypt = require("bcryptjs");
 
 passport.use(
     new LocalStrategy(
-        {
-            usernameField: "email",
-        },
+        { usernameField: "email", },
 
         async (email, password, done) => {
             try {
                 const { rows } = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
-
                 const user = rows[0];
 
-                console.log("User found:", user);
-
                 if (!user) {
-                    return done(null, false, {
-                        message: "Incorrect email.",
-                    });
+                    return done(null, false, { message: "Incorrect email.", });
                 }
 
-                const match = await bcrypt.compare(
-                    password,
-                    user.password_hash
-                );
-
+                const match = await bcrypt.compare(password, user.password_hash);
                 if (!match) {
-                    return done(null, false, {
-                        message: "Incorrect password.",
-                    });
+                    return done(null, false, { message: "Incorrect password.", });
                 }
 
                 return done(null, user);
-
             } catch (error) {
                 return done(error);
             }

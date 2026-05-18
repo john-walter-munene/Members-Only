@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="icon" href="/icons/members-only.png" />
+
+    <title>Members Only Members</title>
+</head>
+
+<body>
+
+    <header>
+        <%- include("partials/header") %>
+    </header>
+
+    <main>
+
+        <section class="intro">
+            <div class="members-only-users">
+                <% if (members && members.length > 0) { %>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Full Name</th>
+                                <th>Username</th>
+                                <th>Posts Created</th>
+                                <th>Membership</th>
+                                <th>Admin</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <% members.forEach((member) => { %>
+                                <tr>
+                                    <td><%= member.id %></td>
+                                    <td><%= member.full_name %></td>
+                                    <td><%= member.email %></td>
+                                    <td><%= member.posts_created %></td>
+                                    <td><%= member.membership_status ? "Yes" : "No" %></td>
+                                    <td><%= member.admin ? "Yes" : "No" %></td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                <% } else { %>
+                    <p class="no-members">
+                        No members available.
+                    </p>
+                <% } %>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <%- include("partials/footer") %>           
+    </footer>
+
+</body>
+</html>

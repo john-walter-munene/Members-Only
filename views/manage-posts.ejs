@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="icon" href="/icons/members-only.png" />
+
+    <title>Members Only Posts</title>
+</head>
+
+<body>
+
+    <header>
+        <%- include("partials/header") %>
+    </header>
+
+    <main>
+        <section class="intro">
+            <div class="members-only-posts">
+                <% if (posts && posts.length > 0) { %>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Message</th>
+                                <th>Author</th>
+                                <th>Email</th>
+                                <th>Created</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <% posts.forEach((post) => { %>
+                                <tr>
+                                    <td><%= post.id %></td>
+                                    <td><%= post.title %></td>
+                                    <td><%= post.message %></td>
+                                    <td><%= post.author_name %></td>
+                                    <td><%= post.author_email %></td>
+                                    <td><%= formatDate(post.created_at) %></td>
+
+                                    <td>
+                                        <form action="/manage-posts/<%= post.id %>/delete" method="post">
+                                            <button type="submit">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+
+                <% } else { %>
+                    <p class="no-posts">
+                        No posts available.
+                    </p>
+                <% } %>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <%- include("partials/footer") %>
+    </footer>
+
+</body>
+</html>

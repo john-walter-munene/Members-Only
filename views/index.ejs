@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <link rel="icon" href="/icons/members-only.png" />
-    <script src="/js/header.js" defer></script>
+    <script src="/js/utils.js"></script>
 
     <title>Members Only</title>
 </head>
@@ -21,11 +21,15 @@
 
         <section class="intro">
 
-            <% if (currentUser) { %>
-                <h1>Welcome back,<%= currentUser.first_name %>!</h1>
-            <% } else { %>
-                <h1>You need to login towrite a message</h1>
-            <% } %>
+            <div class="intro-and-next-step">
+
+                <h1><%= nextStepContent %></h1>
+
+                <% if (nextStepLink && nextStepText) { %>
+                    <a href="<%= nextStepLink %>" class="next-step-link"><%= nextStepText %></a>
+                <% } %>
+
+            </div>
 
         </section>
 
@@ -38,41 +42,35 @@
                     <article class="message-card">
 
                         <div class="message-header">
-
-                            <img 
-                                src="/images/default-profile.png" 
-                                alt="<%= message.username %> profile picture" 
-                            />
-
+                            <img src="/images/default-profile.png" alt="<%= message.username %> profile picture" />
                             <div class="authorship">
-                                <h3><%= message.fullname %></h3>
-                                <p>@<%= message.username %></p>
+                                <% if (user && user.membership_status) { %>
+                                    <h3><%= message.author_name %></h3>
+                                    <p>@<%= message.author_email %></p>
+                                <% } else { %>
+                                    <h3>*****</h3>
+                                    <p>@*****</p>
+                                <% } %>
                             </div>
 
                         </div>
 
                         <div class="message-body">
                             <h2><%= message.title %></h2>
-
-                            <p>
-                                <%= message.message %>
-                            </p>
+                            <p><%= message.message %></p>
+                            <% if (user && user.membership_status) { %>
+                                <p><%= message.created_at %></p>
+                            <% } %>
                         </div>
-
                     </article>
 
                 <% }); %>
 
             <% } else { %>
 
-                <p class="no-messages">
-                    No messages available.
-                </p>
-
+                <p class="no-messages">No messages available.</p>
             <% } %>
-
         </section>
-
     </main>
 
     <footer>
