@@ -10,12 +10,13 @@ const initializeMembersOnlyDatabase = `
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 
-        username TEXT NOT NULL UNIQUE,
+        email TEXT NOT NULL UNIQUE,
         first_name VARCHAR(255) NOT NULL,
         last_name VARCHAR(255) NOT NULL,
 
         membership_status BOOLEAN NOT NULL DEFAULT false,
         password_hash VARCHAR(255) NOT NULL,
+        admin BOOLEAN NOT NULL DEFAULT false,
 
         created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
         updated_at TIMESTAMP WITH TIME ZONE

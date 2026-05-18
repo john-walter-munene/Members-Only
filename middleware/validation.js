@@ -49,7 +49,4 @@ const validateLogin = [
         .trim().notEmpty().withMessage("Password is required"),
 ];
 
-module.exports = {
-    validateRegistration,
-    validateLogin
-};
+module.exports = { validateRegistration, validateLogin };

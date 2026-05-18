@@ -6,10 +6,8 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="icon" href="https://www.flaticon.com/free-icons/smart-key" />
-
     <script src="/js/header.js" defer></script>
-
-    <title>Members Only</title>
+    <title>Admin</title>
 </head>
 
 <body>
@@ -22,22 +20,22 @@
 
         <section class="membership-house">
 
-            <form action="/membership" method="post" class="membership-form">
+            <form action="/admin" method="post" class="membership-form">
 
                 <div class="inspiration">
-                    <h1>Get Clubhouse Membership <%= currentUser.first_name || '' %></h1>
+                    <h1> Become a clubhouse admin <%= currentUser.first_name || '' %></h1>
 
-                    <p>Become a clubhouse member to view the authors of each message.</p>
+                    <p>Become a clubhouse admin to edit or delete messages.</p>
                 </div>
 
                 <div class="club-role">
 
-                    <p>To become a member, please type:<strong>I want to become a member</strong></p>
+                    <p>To become an admin, please type:<strong>I want to become an admin</strong></p>
 
-                    <label for="membership">Membership Phrase</label>
+                    <label for="admin">Admin Phrase</label>
 
-                    <input type="text" id="membership" name="membership_phrase" 
-                        placeholder="Type the membership phrase" autocomplete="off" required />
+                    <input type="text" id="admin" name="admin_phrase" 
+                        placeholder="Type the admin phrase" autocomplete="off" required />
                     <small><%= error %></small>
                 </div>
 
