@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(16, 16, 20);
+    color: cornsilk;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* New Post Section */
+.membership-house {
+    width: min(100%, 700px);
+    margin: 10px auto;
+}
+
+.membership-form {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: 28px 22px;
+    background-color: rgb(24, 24, 30);
+    border: 1px solid rgba(127, 34, 254, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Form Groups */
+.title,
+.post {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.title label p,
+.post label p {
+    font-size: 1rem;
+    font-weight: 700;
+    color: cornsilk;
+}
+
+
+/* Inputs */
+.title input,
+.post textarea {
+    width: 100%;
+    border: 2px solid rgb(45, 45, 55);
+    border-radius: 10px;
+    background-color: rgb(30, 30, 38);
+    color: cornsilk;
+    font-size: 1rem;
+    padding: 14px 16px;
+    transition: border-color 0.25s ease,box-shadow 0.25s ease;
+}
+
+.title input::placeholder,
+.post textarea::placeholder {
+    color: rgb(140, 140, 150);
+}
+
+.title input:focus,
+.post textarea:focus {
+    outline: none;
+    border-color: rgb(127, 34, 254);
+    box-shadow: 0 0 0 4px rgba(127, 34, 254, 0.2);
+}
+
+
+/* Textarea */
+.post textarea {
+    resize: vertical;
+    min-height: 150px;
+    line-height: 1.7;
+    font-family: inherit;
+}
+
+
+/* Submit Button */
+.membership-form button {
+    border: none;
+    border-radius: 10px;
+    padding: 14px 18px;
+    background-color: rgb(127, 34, 254);
+    color: cornsilk;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease,
+        background-color 0.25s ease;
+}
+
+.membership-form button:hover {
+    background-color: rgb(109, 28, 220);
+}
+
+.membership-form button:active {
+    transform: scale(0.98);
+}
+
+
+/* Tablet */
+@media (min-width: 768px) {
+    main {
+        padding: 40px;
+    }
+
+    .membership-house {
+        margin: 50px auto;
+    }
+
+    .membership-form {
+        padding: 40px 36px;
+    }
+}
+
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .membership-house {
+        max-width: 800px;
+    }
+
+    .membership-form {
+        padding: 48px;
+    }
+}

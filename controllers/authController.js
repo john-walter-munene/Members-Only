@@ -42,7 +42,6 @@ const postSignIn = [
     validateLogin,
     (request, response, next) => {
         const errors = validationResult(request);
-
         if (!errors.isEmpty()) {
             return response.status(400).render("sign-in", {
                 errors: errors.array(),
@@ -52,7 +51,7 @@ const postSignIn = [
         next();
     },
 
-    passport.authenticate("local", { successRedirect: "/", failureRedirect: "/sign-in", failureFlash: true }),
+    passport.authenticate("local", { successRedirect: "/", failureRedirect: "/sign-in", }),
 ];
 
 const signOut = (request, response, next) => {
@@ -60,7 +59,6 @@ const signOut = (request, response, next) => {
         if (err) {
             return next(err);
         }
-
         response.redirect("/");
     });
 };

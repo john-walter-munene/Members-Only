@@ -1,0 +1,110 @@
+/* 404 Page */
+.membership-house {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 16px;
+    background-color: rgb(15, 12, 18);
+}
+
+/* Error Container */
+.resource-not-found {
+    width: 100%;
+    max-width: 520px;
+
+    background-color: rgb(29, 22, 30);
+    color: cornsilk;
+
+    padding: 20px;
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* Main Heading */
+.resource-not-found h1 {
+    font-size: 2rem;
+    color: rgb(127, 34, 254);
+}
+
+/* Sub Heading */
+.resource-not-found h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: cornsilk;
+    opacity: 0.9;
+}
+
+/* Paragraph */
+.resource-not-found p {
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+/* Action Buttons Container */
+.error-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-top: 10px;
+}
+
+/* Links */
+.error-actions a {
+    text-decoration: none;
+    padding: 12px;
+
+    border-radius: 8px;
+    font-weight: 700;
+
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Primary Action */
+.error-actions a:first-child {
+    background-color: rgb(127, 34, 254);
+    color: white;
+}
+
+/* Secondary Action */
+.error-actions a:last-child {
+    background-color: rgb(29, 22, 30);
+    color: rgb(127, 34, 254);
+    border: 2px solid rgb(127, 34, 254);
+}
+
+/* Hover */
+.error-actions a:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    .resource-not-found {
+        padding: 28px;
+    }
+
+    .resource-not-found h1 {
+        font-size: 2.4rem;
+    }
+
+    .error-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .error-actions a {
+        flex: 1;
+        text-align: center;
+    }
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" href="/icons/members-only.png" />
+    <link rel="stylesheet" href="/css/404.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <script src="/js/header.js" defer></script>
+    <title>404 | Members Only</title>
+</head>
+
+<body>
+
+    <header>
+        <%- include("partials/header") %>
+    </header>
+
+    <main>
+        <section class="membership-house">
+            <div class="resource-not-found">
+                <h1>404 Error</h1>
+
+                <h2>Resource not found</h2>
+                
+                <p>The resource you are seeking cannot be found!</p>
+                
+                <div class="error-actions">
+                    <a href="/">Return Home</a>
+                    <a href="/new-post">Write a post</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <%- include("partials/footer") %>
+    </footer>
+
+</body>
+</html>

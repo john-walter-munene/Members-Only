@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="/css/sign-up.css">
     <link rel="icon" href="/icons/members-only.png" />
+    <link rel="stylesheet" href="/css/sign-in.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <script src="/js/validation.js" defer></script>
     <title>Members Only Sign In</title>
 </head>
-
 <body>
 
     <header>
@@ -17,11 +18,12 @@
     </header>
 
     <main>
+
         <section class="authentication-house">
-            <form action="/sign-in" method="post">
+            <form action="/sign-in" method="post" class="auth-form">
                 <h1>Sign In to Your Account</h1>
 
-                 <% if (errors && errors.length) { %>
+                <% if (errors && errors.length) { %>
                     <div class="error-container">
                         <ul class="error-list">
                             <% errors.forEach(err => { %>
@@ -31,17 +33,20 @@
                     </div>
                 <% } %>
 
-                <div class="email form-control">
-                    <label for="email">Username (Email)</label>
-                    <input type="email" id="email" name="email" value="<%= data.email || '' %>" required />
-                    <small>Error Message</small>
+                <div class="form-control email">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email"
+                        value="<%= data.email || '' %>" required />
+                    <small></small>
                 </div>
 
-                <div class="password">
+                <div class="form-control password">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" value="<%= data.password || '' %>" required />
-                    <small>Error Message</small>
+                    <input type="password" id="password" name="password"
+                        value="<%= data.password || '' %>" required />
+                    <small></small>
                 </div>
+
                 <button type="submit">Sign In</button>
             </form>
         </section>
@@ -51,5 +56,4 @@
         <%- include("partials/footer") %>
     </footer>
 </body>
-</html>
 </html>
