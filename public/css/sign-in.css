@@ -3,6 +3,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: rgb(15, 12, 18);
 }
 
 /* Main takes remaining height under header */
