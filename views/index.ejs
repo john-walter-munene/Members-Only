@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
     <link rel="icon" href="/icons/members-only.png" />
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <script src="/js/utils.js"></script>
-
     <title>Members Only</title>
 </head>
 
 <body>
-
     <header>
         <%- include("partials/header") %>
     </header>
@@ -42,7 +42,7 @@
                     <article class="message-card">
 
                         <div class="message-header">
-                            <img src="/images/default-profile.png" alt="<%= message.username %> profile picture" />
+                            <img src="/images/message.png" alt="<%= message.username %> profile picture" />
                             <div class="authorship">
                                 <% if (user && user.membership_status) { %>
                                     <h3><%= message.author_name %></h3>

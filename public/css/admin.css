@@ -1,0 +1,160 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(16, 16, 20);
+    color: cornsilk;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+
+/* Admin Section */
+.membership-house {
+    width: min(100%, 600px);
+    margin: 30px auto;
+}
+
+.membership-form {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: 28px 22px;
+    background-color: rgb(24, 24, 30);
+    border: 1px solid rgba(127, 34, 254, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Intro */
+.inspiration {
+    text-align: center;
+}
+
+.inspiration h1 {
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+    color: cornsilk;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.inspiration p {
+    font-size: 1rem;
+    color: rgb(190, 190, 200);
+    line-height: 1.6;
+}
+
+
+/* Admin Phrase Box */
+.club-role {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.club-role p {
+    line-height: 1.8;
+    font-size: 1rem;
+    color: rgb(210, 210, 220);
+}
+
+.club-role strong {
+    color: rgb(127, 34, 254);
+    margin-left: 6px;
+}
+
+.club-role label {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.club-role input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid rgb(45, 45, 55);
+    border-radius: 10px;
+    background-color: rgb(30, 30, 38);
+    color: cornsilk;
+    font-size: 1rem;
+    transition: border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.club-role input::placeholder {
+    color: rgb(140, 140, 150);
+}
+
+.club-role input:focus {
+    outline: none;
+    border-color: rgb(127, 34, 254);
+    box-shadow: 0 0 0 4px rgba(127, 34, 254, 0.2);
+}
+
+.club-role small {
+    color: rgb(255, 120, 120);
+    font-size: 0.95rem;
+    min-height: 18px;
+}
+
+
+/* Submit Button */
+.membership-form button {
+    border: none;
+    border-radius: 10px;
+    padding: 14px 18px;
+    background-color: rgb(127, 34, 254);
+    color: cornsilk;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease,
+        background-color 0.25s ease;
+}
+
+.membership-form button:hover {
+    background-color: rgb(109, 28, 220);
+}
+
+.membership-form button:active {
+    transform: scale(0.98);
+}
+
+
+/* Tablet */
+@media (min-width: 768px) {
+    main {
+        padding: 40px;
+    }
+
+    .membership-house {
+        margin: 60px auto;
+    }
+
+    .membership-form {
+        padding: 40px 36px;
+    }
+}
+
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .membership-house {
+        max-width: 650px;
+    }
+
+    .membership-form {
+        padding: 48px;
+    }
+}

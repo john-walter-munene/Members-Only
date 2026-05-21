@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background-color: rgb(15, 15, 20);
+    color: cornsilk;
+    font-family: Arial, Helvetica, sans-serif;
+
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    width: min(1200px, 92%);
+    margin: 0 auto;
+}
+
+/* Intro Section */
+.intro {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.intro-and-next-step {
+    width: min(800px, 100%);
+    text-align: center;
+
+    padding: 40px 30px;
+    border-radius: 20px;
+
+    background-color: rgb(29, 22, 30);
+    border: 2px solid rgba(127, 34, 254, 0.2);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.intro-and-next-step h1 {
+    margin: 0;
+    line-height: 1.6;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+}
+
+.next-step-link {
+    display: inline-block;
+    margin-top: 24px;
+
+    text-decoration: none;
+    font-weight: 700;
+    color: cornsilk;
+
+    background-color: rgb(127, 34, 254);
+
+    padding: 12px 22px;
+    border-radius: 10px;
+
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.next-step-link:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Messages */
+.message-house {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+
+    margin-bottom: 60px;
+}
+
+.message-card {
+    background-color: rgb(29, 22, 30);
+
+    border-radius: 18px;
+    padding: 24px;
+
+    border: 2px solid rgba(127, 34, 254, 0.15);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.message-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(127, 34, 254, 0.45);
+}
+
+.message-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    margin-bottom: 20px;
+}
+
+.message-header img {
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.authorship h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.authorship p {
+    margin-top: 4px;
+    color: rgb(180, 180, 180);
+    font-size: 0.95rem;
+}
+
+/* Message Body */
+.message-body h2 {
+    margin-top: 0;
+    margin-bottom: 14px;
+
+    font-size: 1.35rem;
+    color: rgb(127, 34, 254);
+}
+
+.message-body p {
+    line-height: 1.7;
+    color: rgb(220, 220, 220);
+}
+
+.message-body p:last-child {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: rgb(160, 160, 160);
+}
+
+/* No Messages */
+.no-messages {
+    grid-column: 1 / -1;
+    text-align: center;
+
+    font-size: 1.1rem;
+    padding: 30px;
+
+    background-color: rgb(29, 22, 30);
+    border-radius: 16px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .intro {
+        margin: 30px 0;
+    }
+
+    .intro-and-next-step {
+        padding: 30px 20px;
+    }
+
+    .message-house {
+        grid-template-columns: 1fr;
+    }
+}

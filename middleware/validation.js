@@ -45,8 +45,7 @@ const validateLogin = [
         .notEmpty().withMessage("Email is required")
         .isEmail().withMessage("Please enter a valid email"),
 
-    body("password")
-        .trim().notEmpty().withMessage("Password is required"),
+    body("password").trim().notEmpty().withMessage("Password is required"),
 ];
 
 module.exports = { validateRegistration, validateLogin };

@@ -1,0 +1,119 @@
+/* Header Base */
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Brand (logo + title link) */
+.brand-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.header-left img {
+    width: 56px;
+    height: 56px;
+}
+
+.header-left h1 {
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    color: rgb(127, 34, 254);
+    text-decoration: underline;
+    text-decoration-color: rgb(127, 34, 254);
+    text-underline-offset: 6px;
+}
+
+/* Right nav */
+.header-right ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.header-right li {
+    display: flex;
+}
+
+/* Buttons */
+.header-right a {
+    text-decoration: none;
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    font-weight: 600;
+    color: cornsilk;
+
+    padding: 10px 18px;
+    border-radius: 8px;
+
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Auth buttons */
+.auth:first-child a {
+    background-color: rgb(127, 34, 254);
+}
+
+.auth:last-child a {
+    background-color: rgb(29, 22, 30);
+    color: rgb(127, 34, 254);
+    border: 2px solid rgb(127, 34, 254);
+}
+
+/* Logged-in links */
+.header-right li:not(.auth) a {
+    background-color: rgb(127, 34, 254);
+}
+
+/* Hover */
+.header-right a:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* ========================= */
+/* Mobile Layout Fix (KEY FIX)
+/* ========================= */
+@media (max-width: 768px) {
+
+    .header-nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-left,
+    .header-right {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .header-right ul {
+        flex-direction: column;   /* THIS fixes 2 + 1 issue */
+        width: 100%;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .header-right li {
+        width: 80%;
+    }
+
+    .header-right a {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -46,8 +46,6 @@ const getAllPosts = async () => {
         ORDER BY posts.created_at DESC
     `);
 
-    console.log("Retrieved posts:", rows);
-
     return rows;
 };
 

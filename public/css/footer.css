@@ -1,0 +1,40 @@
+.footer-nav {
+    margin-top: auto;
+
+    padding: 30px 20px;
+    text-align: center;
+
+    border-top: 1px solid rgba(127, 34, 254, 0.2);
+    background-color: rgb(20, 15, 25);
+}
+
+.footer-nav nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+
+    margin-bottom: 16px;
+}
+
+.footer-nav nav a {
+    text-decoration: none;
+    color: rgb(127, 34, 254);
+    font-weight: 600;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.footer-nav nav a:hover {
+    transform: translateY(-2px);
+    opacity: 0.85;
+}
+
+.footer-nav p {
+    margin: 0;
+    color: rgb(170, 170, 170);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}

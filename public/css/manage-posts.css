@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(16, 16, 20);
+    color: cornsilk;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+
+/* Posts Section */
+.members-only-posts {
+    width: min(100%, 1400px);
+    margin: 30px auto;
+    background-color: rgb(24, 24, 30);
+    border: 1px solid rgba(127, 34, 254, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Table Wrapper */
+.members-only-posts {
+    overflow-x: auto;
+}
+
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+}
+
+thead {
+    background-color: rgb(127, 34, 254);
+}
+
+thead th {
+    padding: 18px 20px;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 700;
+    color: cornsilk;
+}
+
+tbody tr {
+    border-bottom: 1px solid rgb(40, 40, 48);
+    transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+    background-color: rgb(32, 32, 40);
+}
+
+tbody td {
+    padding: 18px 20px;
+    font-size: 0.98rem;
+    color: rgb(220, 220, 225);
+    vertical-align: top;
+    line-height: 1.6;
+}
+
+
+/* Message Column */
+tbody td:nth-child(3) {
+    max-width: 350px;
+    min-width: 250px;
+    word-break: break-word;
+}
+
+
+/* Delete Button */
+tbody form {
+    display: flex;
+}
+
+tbody button {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    background-color: rgb(210, 55, 55);
+    color: cornsilk;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.25s ease;
+}
+
+tbody button:hover {
+    background-color: rgb(180, 40, 40);
+}
+
+tbody button:active {
+    transform: scale(0.96);
+}
+
+
+/* Empty State */
+.no-posts {
+    text-align: center;
+    padding: 80px 20px;
+    font-size: 1.1rem;
+    color: rgb(170, 170, 180);
+}
+
+
+/* Tablet */
+@media (min-width: 768px) {
+    main {
+        padding: 40px;
+    }
+
+    .members-only-posts {
+        margin: 50px auto;
+    }
+
+    thead th,
+    tbody td {
+        padding: 20px 24px;
+    }
+}
+
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .members-only-posts {
+        border-radius: 20px;
+    }
+}
