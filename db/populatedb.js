@@ -49,20 +49,8 @@ const initializeMembersOnlyDatabase = `
     CREATE INDEX IF NOT EXISTS idx_posts_author_id ON posts(author_id);
 `;
 
-const {
-    DB_USER: user,
-    DB_PASSWORD: password,
-    DB_NAME: dbName,
-    DB_HOST: host,
-    DB_PORT: port,
-    NODE_ENV,
-} = process.env;
-
-if (!user || !password || !host || !port || !dbName) {
-    throw new Error("Missing environment variables in .env file");
-}
-
-const dbUrl = `postgresql://${user}:${password}@${host}:${port}/${dbName}`;
+const dbUrl = process.env.DATABASE_URL;
+if (!dbUrl) throw new Error("Database URL is missing!");
 
 async function seed(client) {
   console.log("🌱 Seeding database...");
@@ -144,14 +132,12 @@ async function seed(client) {
 
 async function main() {
     console.log("Initializing database...");
-
     const client = new Client({
         connectionString: dbUrl,
-        ssl:
-            NODE_ENV === "production"
-                ? { rejectUnauthorized: false }
-                : false,
-    });
+        ssl: {
+            rejectUnauthorized: false,
+        },
+    }); 
 
     try {
         await client.connect();
