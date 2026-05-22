@@ -1,4 +1,7 @@
 /* Membership Page */
+body {
+    background-color: rgb(15, 12, 18);
+}
 .membership-house {
     min-height: 64vh;
     display: flex;
